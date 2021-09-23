@@ -1,0 +1,12 @@
+com\lantone\es\config\ESConfig.class
+com\lantone\es\entity\TbHotel.class
+com\lantone\es\facade\HotelFacade.class
+com\lantone\es\service\TbHotelService.class
+com\lantone\es\entity\HotelDoc.class
+com\lantone\es\service\impl\TbHotelServiceImpl.class
+com\lantone\es\config\MybatisPlusConfigurer.class
+com\lantone\es\mapper\TbHotelMapper.class
+com\lantone\es\EsApplication.class
+com\lantone\es\web\TbHotelController.class
+com\lantone\es\config\SwaggerConfigurer.class
+com\lantone\es\constants\HotelIndexConstants.class

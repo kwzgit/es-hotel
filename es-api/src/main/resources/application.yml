@@ -1,0 +1,78 @@
+server:
+  port: 9212
+spring:
+  application:
+    name: orderservice
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      platform: mysql
+      url: jdbc:mysql://192.168.2.234:3309/es?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&allowMultiQueries=true
+      username: root
+      password: 123456
+      # 连接池的配置信息
+      # 初始化大小，最小，最大
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters.commons-log.connection-logger-name: wall,log4j
+      filter:
+        stat:
+          enabled: true
+          mergeSql: true
+          log-slow-sql: true
+          slow-sql-millis: 2000
+      #监控配置
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: root
+        login-password: root
+
+logging:
+  level:
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+eureka:
+  client:
+    service-url: #eureka的地址信息
+      defaultZone: http://127.0.0.1:10085/eureka
+feign:
+#  client:
+#    config:
+#      default: #全局配置
+#        loggerLevel: BASIC #日志级别，BASIC就是基本的请求和响应信息
+  httpclient:
+    enabled: true #开启feign对httpclient的支持
+    max-connections: 200 #最大连接数
+    max-connections-per-route: 50 #每个路径的最大连接数
+
+yunshangxue:
+  elasticsearch:
+    hostlist: ${eshostlist:192.168.2.123:9200}
+
+swagger:
+  enable: true

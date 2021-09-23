@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lantone.es.mapper.TbHotelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lantone.es.entity.TbHotel">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="address" property="address" />
+        <result column="price" property="price" />
+        <result column="score" property="score" />
+        <result column="brand" property="brand" />
+        <result column="city" property="city" />
+        <result column="star_name" property="starName" />
+        <result column="business" property="business" />
+        <result column="latitude" property="latitude" />
+        <result column="longitude" property="longitude" />
+        <result column="pic" property="pic" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, address, price, score, brand, city, star_name, business, latitude, longitude, pic
+    </sql>
+
+</mapper>

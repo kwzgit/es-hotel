@@ -1,0 +1,9 @@
+server:
+  port: 10085
+spring:
+  application:
+    name: eurekaserver #eureka服务名称
+eureka:
+  client:
+    service-url: #eureka的地址信息
+      defaultZone: http://127.0.0.1:10085/eureka
